@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TechZone.Ecommerce.DTOs\TechZone.Ecommerce.DTOs.csproj" />
+    <ProjectReference Include="..\TechZone.Ecommerce.Infrastructure\TechZone.Ecommerce.Infrastructure.csproj" />
+    <ProjectReference Include="..\TechZone.Ecommerce.Interfaces\TechZone.Ecommerce.Interfaces.csproj" />
+    <ProjectReference Include="..\TechZone.Ecommerce.Transversal\TechZone.Ecommerce.Transversal.csproj" />
+  </ItemGroup>
+
+</Project>
