@@ -2,7 +2,7 @@
 
 namespace TechZone.Ecommerce.Domain.Entities
 {
-    internal class UserRole: IdentityUserRole<Guid>
+    public sealed class UserRole: IdentityRole<Guid>
     {
 
     }
