@@ -3,7 +3,7 @@ using TechZone.Ecommerce.Domain.Entities;
 using TechZone.Ecommerce.DTOs.DTOs;
 using TechZone.Ecommerce.UseCases.Users.Commands.CreateUserCommand;
 
-namespace TechZone.Ecommerce.UseCases.Common
+namespace TechZone.Ecommerce.UseCases.Common.Mappings
 {
     internal sealed class MappingProfile: Profile
     {

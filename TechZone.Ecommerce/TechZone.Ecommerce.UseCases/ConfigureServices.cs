@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TechZone.Ecommerce.UseCases.Common.Behaviours;
 
 namespace TechZone.Ecommerce.UseCases
 {
@@ -14,7 +16,7 @@ namespace TechZone.Ecommerce.UseCases
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                //config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(DataValidationBehaviour<,>));
+                config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(DataValidationBehaviour<,>));
             });
 
             // Add Repositories
