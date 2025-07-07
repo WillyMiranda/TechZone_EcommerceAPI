@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.0" />
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TechZone.Ecommerce.DTOs\TechZone.Ecommerce.DTOs.csproj" />
     <ProjectReference Include="..\TechZone.Ecommerce.Infrastructure\TechZone.Ecommerce.Infrastructure.csproj" />
     <ProjectReference Include="..\TechZone.Ecommerce.Interfaces\TechZone.Ecommerce.Interfaces.csproj" />

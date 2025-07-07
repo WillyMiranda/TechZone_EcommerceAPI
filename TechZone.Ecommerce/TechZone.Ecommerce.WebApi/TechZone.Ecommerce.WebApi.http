@@ -1,6 +1,0 @@
-@TechZone.Ecommerce.WebApi_HostAddress = http://localhost:5187
-
-GET {{TechZone.Ecommerce.WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,7 +1,6 @@
 ﻿namespace TechZone.Ecommerce.Transversal
 {
-    public class Class1
+    public sealed class Response<T>: GenericResponse<T>
     {
-
     }
 }

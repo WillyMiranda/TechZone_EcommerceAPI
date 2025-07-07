@@ -1,7 +1,11 @@
 using TechZone.Ecommerce.Domain.Entities;
 using TechZone.Ecommerce.Persistence;
+using TechZone.Ecommerce.UseCases;
 using TechZone.Ecommerce.WebApi.Modules.Authentication;
 using TechZone.Ecommerce.WebApi.Modules.Feature;
+using TechZone.Ecommerce.WebApi.Modules.Injection;
+using TechZone.Ecommerce.WebApi.Modules.Versioning;
+using TechZone.Ecommerce.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +18,21 @@ builder.Services.AddSwaggerGen();
 
 //agregar servicios de capas logicas
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 //agregar servicios de modulos
 builder.Services.AddAuthenticationServices();
 builder.Services.AddFeatureServices();
+builder.Services.AddInjectionServices();
+builder.Services.AddApiVersioningServices();
 
 var app = builder.Build();
+//datos semilla
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await SeedDataService.InitializeAsync(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
