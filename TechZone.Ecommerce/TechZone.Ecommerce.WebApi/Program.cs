@@ -5,6 +5,7 @@ using TechZone.Ecommerce.WebApi.Modules.Authentication;
 using TechZone.Ecommerce.WebApi.Modules.Feature;
 using TechZone.Ecommerce.WebApi.Modules.Injection;
 using TechZone.Ecommerce.WebApi.Modules.Versioning;
+using TechZone.Ecommerce.WebApi.Modules.Middleware;
 using TechZone.Ecommerce.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,10 @@ builder.Services.AddInjectionServices();
 builder.Services.AddApiVersioningServices();
 
 var app = builder.Build();
+
+//agregar servicios de middleware
+app.AddMiddlewareServices();
+
 //datos semilla
 using (var scope = app.Services.CreateScope())
 {
