@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TechZone.Ecommerce.Transversal;
 
 namespace TechZone.Ecommerce.UseCases.Users.Commands.UpdateUserCommand
 {
-    internal class UpdateUserCommand
+    public sealed record UpdateUserCommand: IRequest<Response<bool>>
     {
+        public Guid Id { get; set; }
+        public string Name { get; init; }
+        public string Email { get; init; }
+        public string PhoneNumber { get; init; }
+        public bool LockoutEnabled { get; init; }
+        public bool TwoFactorEnabled { get; init; }
+        public Guid RoleId { get; init; }
+        public string RoleName { get; init; }
     }
 }

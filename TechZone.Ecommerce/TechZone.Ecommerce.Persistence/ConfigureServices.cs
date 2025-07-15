@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TechZone.Ecommerce.Domain.Entities;
@@ -6,6 +7,7 @@ using TechZone.Ecommerce.Interfaces.Persistence;
 using TechZone.Ecommerce.Interfaces.Persistence.Repositories;
 using TechZone.Ecommerce.Interfaces.Persistence.Services;
 using TechZone.Ecommerce.Persistence.Contexts;
+using TechZone.Ecommerce.Persistence.DapperTypeHandlers;
 using TechZone.Ecommerce.Persistence.Repositories;
 using TechZone.Ecommerce.Persistence.Services;
 
@@ -32,6 +34,7 @@ namespace TechZone.Ecommerce.Persistence
             .AddRoles<UserRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            SqlMapper.AddTypeHandler(new GuidTypeHandler());
 
             //servicio de unidad de trabajo
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));

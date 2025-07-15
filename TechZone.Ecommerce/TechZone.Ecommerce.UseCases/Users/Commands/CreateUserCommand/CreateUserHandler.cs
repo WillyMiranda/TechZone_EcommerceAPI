@@ -13,7 +13,7 @@ namespace TechZone.Ecommerce.UseCases.Users.Commands.CreateUserCommand
             var response = new Response<bool>();
 
             var user = _mapper.Map<Domain.Entities.User>(request);
-            response.Data = await _unitOfWork.Users.AddAsync(_currentUser.UserId.GetValueOrDefault(), user, request.Password, request.RoleName, cancellationToken);
+            response.Data = await _unitOfWork.Users.AddAsync(user, request.Password, request.RoleName, cancellationToken);
             if (!response.Data)
             {
                 response.Message = ResponseMessage.CREATE_FAILURE;

@@ -1,12 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace TechZone.Ecommerce.UseCases.Users.Commands.UpdateUserCommand
 {
-    internal class UpdateUserValidator
+    public sealed class UpdateUserValidator: AbstractValidator<UpdateUserCommand>
     {
+        public UpdateUserValidator()
+        {
+            RuleFor(x => x.Id)
+                .NotNull().WithMessage("El identificador del usuario no puede ser nulo.")
+                .NotEmpty().WithMessage("El identificador del usuario no puede estar vacío.")
+                .Must(guid => guid != Guid.Empty).WithMessage("El identificador del usuario no puede ser un GUID vacío.");
+
+            RuleFor(x => x.Name)
+                .NotNull().NotEmpty().WithMessage("El nombre del usuario es requerido.")
+                .MaximumLength(50).WithMessage("El nombre del usuario no debe exceder los 50 caracteres.");
+
+            RuleFor(x => x.PhoneNumber)
+                .NotNull().NotEmpty().WithMessage("El teléfono no puede estar vacío.")
+                .Length(8, 8).WithMessage("El teléfono debe contener 8 caracteres.");
+
+            RuleFor(x => x.Email)
+                .NotNull().NotEmpty().WithMessage("El correo no puede estar vacío.")
+                .EmailAddress().WithMessage("El correo tiene un formato inválido.")
+                .Length(1, 255).WithMessage("El correo debe contener entre 1 a 255 caracteres");
+
+            RuleFor(x => x.LockoutEnabled).NotNull().WithMessage("La propiedad de Activar Bloqueo no puede ser nula.");
+
+            RuleFor(x => x.TwoFactorEnabled).NotNull().WithMessage("El doble factor de verificación no puede ser nulo.");
+
+            RuleFor(x => x.RoleName)
+                .NotNull().NotEmpty().WithMessage("El rol es requerido.")
+                .MaximumLength(6).WithMessage("El rol no debe exceder los 6 caracteres.");
+
+        }
     }
 }

@@ -1,11 +1,13 @@
+using Asp.Versioning.ApiExplorer;
 using TechZone.Ecommerce.Domain.Entities;
 using TechZone.Ecommerce.Persistence;
 using TechZone.Ecommerce.UseCases;
 using TechZone.Ecommerce.WebApi.Modules.Authentication;
 using TechZone.Ecommerce.WebApi.Modules.Feature;
 using TechZone.Ecommerce.WebApi.Modules.Injection;
-using TechZone.Ecommerce.WebApi.Modules.Versioning;
 using TechZone.Ecommerce.WebApi.Modules.Middleware;
+using TechZone.Ecommerce.WebApi.Modules.Swagger;
+using TechZone.Ecommerce.WebApi.Modules.Versioning;
 using TechZone.Ecommerce.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,7 @@ builder.Services.AddAuthenticationServices();
 builder.Services.AddFeatureServices();
 builder.Services.AddInjectionServices();
 builder.Services.AddApiVersioningServices();
+builder.Services.AddSwaggerServices();
 
 var app = builder.Build();
 
@@ -42,8 +45,18 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+
+        foreach (var description in provider.ApiVersionDescriptions)
+        {
+            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"TechZone Ecommerce API {description.GroupName.ToUpperInvariant()}");
+
+        }
+    });
+    app.MapSwagger();
 }
 
 app.UseHttpsRedirection();

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TechZone.Ecommerce.DTOs.DTOs;
+using TechZone.Ecommerce.Transversal;
 
 namespace TechZone.Ecommerce.UseCases.Users.Queries.GetByEmailUserQuery
 {
-    internal class GetByEmailUserQuery
+    public sealed record GetByEmailUserQuery : IRequest<Response<UserDto>>
     {
+        public string Email { get; init; }
     }
 }

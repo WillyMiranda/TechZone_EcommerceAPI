@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using TechZone.Ecommerce.DTOs.DTOs;
+using TechZone.Ecommerce.Transversal;
 
 namespace TechZone.Ecommerce.UseCases.Users.Queries.GetAllUserQuery
 {
-    internal class GetAllUserQuery
+    public sealed record GetAllUserQuery: IRequest<Response<IEnumerable<UserDto>>>
     {
     }
 }

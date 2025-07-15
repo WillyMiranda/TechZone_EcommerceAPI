@@ -9,7 +9,7 @@ namespace TechZone.Ecommerce.Persistence.Repositories
 {
     internal sealed class UserRepository(UserManager<User> _userManager, DapperContext _dapperContext, ApplicationDbContext _context) : IUserRepository
     {
-        public async Task<bool> AddAsync(Guid userId, User user, string password, string role, CancellationToken cancellation)
+        public async Task<bool> AddAsync(User user, string password, string role, CancellationToken cancellation)
         {
             //userName e email se usan de manera indistinta
             user.UserName = user.Email;
@@ -29,19 +29,11 @@ namespace TechZone.Ecommerce.Persistence.Repositories
             var twoFactor = await _userManager.SetTwoFactorEnabledAsync(userCreated, user.TwoFactorEnabled);
             if (!twoFactor.Succeeded) return false;
 
-            if (role.Equals("Owner"))
-            {
-                var extendedProperties = await UpdateExtendedPropertiesBeforeCreateAsync(user.Id, user, cancellation);
-                return extendedProperties;
-            }
-            else
-            {
-                var extendedProperties = await UpdateExtendedPropertiesBeforeCreateAsync(userId, user, cancellation);
-                return extendedProperties;
-            }
+            var extendedProperties = await UpdateExtendedPropertiesBeforeCreateAsync(user.Id, user, cancellation);
+            return extendedProperties;
         }
 
-        public async Task<bool> UpdateAsync(Guid ownerId, Guid userId, User user, string role, CancellationToken cancellation)
+        public async Task<bool> UpdateAsync(Guid userId, User user, string role, CancellationToken cancellation)
         {
             var userToUpdate = await _userManager.FindByIdAsync(user.Id.ToString());
             if (userToUpdate == null) return false;
@@ -85,16 +77,9 @@ namespace TechZone.Ecommerce.Persistence.Repositories
             var userRoleAdd = await _userManager.AddToRoleAsync(userToUpdate, role);
             if (!userRoleAdd.Succeeded) return false;
 
-            if (role.Equals("Owner"))
-            {
-                var extendedProperties = await UpdateExtendedPropertiesBeforeUpdateAsync(user.Id, userToUpdate, user, cancellation);
-                return extendedProperties;
-            }
-            else
-            {
-                var extendedProperties = await UpdateExtendedPropertiesBeforeUpdateAsync(userId, userToUpdate, user, cancellation);
-                return extendedProperties;
-            }
+            var extendedProperties = await UpdateExtendedPropertiesBeforeUpdateAsync(userId, userToUpdate, user, cancellation);
+            return extendedProperties;
+
         }
 
         public async Task<bool> UpdateExtendedPropertiesBeforeCreateAsync(Guid userId, User user, CancellationToken cancellation)
