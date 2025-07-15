@@ -6,10 +6,18 @@ namespace TechZone.Ecommerce.Persistence
 {
     internal sealed class UnitOfWork(
             IUserRepository users,
-            IUserService usersService
+            IUserService usersService,
+            ICategoryRepository categoryRepository,
+            ICategoryService categoryService,
+            ISubCategoryRepository subCategoryRepository,
+            ISubCategoryService subCategoryService
         ) : IUnitOfWork
     {
         public IUserRepository Users => users;
         public IUserService UsersService => usersService;
+        public ICategoryRepository Categories => categoryRepository;
+        public ICategoryService CategoryService => categoryService;
+        public ISubCategoryRepository SubCategories => subCategoryRepository;
+        public ISubCategoryService SubCategoryService => subCategoryService;
     }
 }

@@ -7,5 +7,9 @@ namespace TechZone.Ecommerce.Interfaces.Persistence
     {
         public IUserRepository Users { get; }
         public IUserService UsersService { get; }
+        public ICategoryRepository Categories { get; }
+        public ICategoryService CategoryService { get; }
+        public ISubCategoryRepository SubCategories { get; }
+        public ISubCategoryService SubCategoryService { get; }
     }
 }

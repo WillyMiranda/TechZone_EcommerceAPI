@@ -8,3 +8,5 @@
 /TechZone.Ecommerce/TechZone.Ecommerce.WebApi/obj
 TechZone.Ecommerce/TechZone.Ecommerce.WebApi/appsettings.json
 /TechZone.Ecommerce/.vs
+/TechZone.Ecommerce/TechZone.Ecommerce.Test.UsesCases/bin
+/TechZone.Ecommerce/TechZone.Ecommerce.Test.UsesCases/obj
