@@ -19,4 +19,8 @@
     <ProjectReference Include="..\TechZone.Ecommerce.Transversal\TechZone.Ecommerce.Transversal.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="TechZone.Ecommerce.Test.UsesCases"/>
+	</ItemGroup>
+
 </Project>
