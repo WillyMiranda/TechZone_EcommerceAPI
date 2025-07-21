@@ -82,7 +82,7 @@ namespace TechZone.Ecommerce.Persistence.Repositories
             try
             {
                 var query = @"
-                    UPDATE Categories
+                    UPDATE SubCategories
                     SET Name = @Name,
                         Image = @Image,
                         IsActive = @IsActive,

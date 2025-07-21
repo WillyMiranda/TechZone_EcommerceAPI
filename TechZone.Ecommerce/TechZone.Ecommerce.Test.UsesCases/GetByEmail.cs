@@ -25,7 +25,7 @@ namespace TechZone.Ecommerce.UsesCases.Users
 
 
             //3 - Assert - Verificar el resultado de la acción
-            Assert.Null(expectedUser);
+            Assert.Null(result.Data);
             Assert.Equal(ResponseMessage.GET_FAILURE, result.Message);
             Assert.False(result.IsSuccess);
 

@@ -6,5 +6,6 @@ namespace TechZone.Ecommerce.Interfaces.Persistence.Services
     {
         Task<SubCategoryDto> GetByIdAsync(Guid id, CancellationToken cancellation);
         Task<IEnumerable<SubCategoryDto>> GetAllAsync(CancellationToken cancellation);
+        Task<IEnumerable<SubCategoryDto>> GetAllByCategoryAsync(Guid CategoryId, CancellationToken cancellation);
     }
 }

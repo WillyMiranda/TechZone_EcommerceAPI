@@ -8,10 +8,10 @@ namespace TechZone.Ecommerce.Domain.Entities
         public required string Name { get; set; }
         public double Price { get; set; }
         public double Cost { get; set; }
-        public double Rating { get; set; }
-        public int Review { get; set; }
+        //public double Rating { get; set; }
+        //public int Review { get; set; }
         public required string Image { get; set; }
-        public int Stock { get; set; }
+        public decimal Stock { get; set; }
         public bool FreeShipping { get; set; }
         public bool Featured { get; set; }
         public required string Description { get; set; }

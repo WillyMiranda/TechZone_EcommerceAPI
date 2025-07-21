@@ -12,6 +12,6 @@
         public const string DELETE_FAILURE = "Error al eliminar";
         public const string GET_SUCCESS = "Consulta Exitosa";
         public const string GET_FAILURE = "Error al consultar";
-        public const string CORRELATIVE_SUCCESS = "Correlativo generado exitosamente";
+        // public const string CORRELATIVE_SUCCESS = "Correlativo generado exitosamente";
     }
 }

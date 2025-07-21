@@ -34,7 +34,8 @@ namespace TechZone.Ecommerce.Persistence
             .AddRoles<UserRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            SqlMapper.AddTypeHandler(new GuidTypeHandler());
+            SqlMapper.AddTypeHandler(typeof(Guid), new GuidTypeHandler());
+            SqlMapper.AddTypeHandler(typeof(Dictionary<string, string>), new DictionaryStringHandler());
 
             //servicio de unidad de trabajo
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));

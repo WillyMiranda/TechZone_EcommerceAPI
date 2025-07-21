@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using TechZone.Ecommerce.Transversal;
+using TechZone.Ecommerce.UseCases.Common.Exceptions;
 
 namespace TechZone.Ecommerce.WebApi.Modules.GlobalException
 {
@@ -11,6 +12,17 @@ namespace TechZone.Ecommerce.WebApi.Modules.GlobalException
             {
                 await next(context);
 
+            }
+            catch (ValidationExceptionCustom ex)
+            {
+                context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                context.Response.ContentType = "application/json";
+                var response = new Response<Object>();
+                response.Message = ResponseMessage.VALIDATION_ERROR;
+                response.Errors.AddRange(ex.Errors);
+
+                //await Task.FromResult(JsonConvert.SerializeObject(response));
+                await System.Text.Json.JsonSerializer.SerializeAsync(context.Response.Body, response, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             }
             catch (Exception ex)
             {
