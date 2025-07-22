@@ -44,11 +44,13 @@ namespace TechZone.Ecommerce.Persistence
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
             services.AddScoped(typeof(ICategoryRepository), typeof(CategoryRepository));
             services.AddScoped(typeof(ISubCategoryRepository), typeof(SubCategoryRepository));
+            services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
 
             //services - queries
             services.AddScoped(typeof(IUserService), typeof(UserService));
             services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
             services.AddScoped(typeof(ISubCategoryService), typeof(SubCategoryService));
+            services.AddScoped(typeof(IProductService), typeof(ProductService));
 
             return services;
         }

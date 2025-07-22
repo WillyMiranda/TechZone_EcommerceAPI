@@ -11,5 +11,7 @@ namespace TechZone.Ecommerce.Interfaces.Persistence
         public ICategoryService CategoryService { get; }
         public ISubCategoryRepository SubCategories { get; }
         public ISubCategoryService SubCategoryService { get; }
+        public IProductRepository Products { get; }
+        public IProductService ProductService { get; }
     }
 }

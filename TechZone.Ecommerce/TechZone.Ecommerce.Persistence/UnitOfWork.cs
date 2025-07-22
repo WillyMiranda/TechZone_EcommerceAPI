@@ -10,7 +10,9 @@ namespace TechZone.Ecommerce.Persistence
             ICategoryRepository categoryRepository,
             ICategoryService categoryService,
             ISubCategoryRepository subCategoryRepository,
-            ISubCategoryService subCategoryService
+            ISubCategoryService subCategoryService,
+            IProductRepository productRepository,
+            IProductService productService
         ) : IUnitOfWork
     {
         public IUserRepository Users => users;
@@ -19,5 +21,7 @@ namespace TechZone.Ecommerce.Persistence
         public ICategoryService CategoryService => categoryService;
         public ISubCategoryRepository SubCategories => subCategoryRepository;
         public ISubCategoryService SubCategoryService => subCategoryService;
+        public IProductRepository Products => productRepository;
+        public IProductService ProductService => productService;
     }
 }

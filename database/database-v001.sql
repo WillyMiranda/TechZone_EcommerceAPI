@@ -44,7 +44,7 @@ CREATE TABLE Products (
 	CreatedAt DATETIME NOT NULL,
     UpdatedAt DATETIME NULL,
     CategoryId BINARY(16) NOT NULL,
-    SubCategoryId BINARY(16) NOT NULL,
+    SubCategoryId BINARY(16) NULL,
     FOREIGN KEY(CategoryId) REFERENCES Categories(Id),
     FOREIGN KEY(SubCategoryId) REFERENCES SubCategories(Id)
 );

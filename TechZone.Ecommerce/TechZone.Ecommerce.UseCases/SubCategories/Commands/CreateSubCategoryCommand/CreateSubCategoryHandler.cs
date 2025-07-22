@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using TechZone.Ecommerce.Interfaces.Persistence;
-using TechZone.Ecommerce.Interfaces.Services;
 using TechZone.Ecommerce.Transversal;
 
 namespace TechZone.Ecommerce.UseCases.SubCategories.Commands.CreateSubCategoryCommand
